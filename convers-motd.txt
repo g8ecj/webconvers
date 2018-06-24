@@ -1,0 +1,6 @@
+<?php
+// Message of the day is now in PHP 
+webconversDisplay($user, $jsflag, "<h3>Welcome to the WW Convers web gateway at " . CONVERS_GATEWAY . "</h3>", 0);
+webconversDisplay($user, $jsflag, "<h5> Now running version " . VERSION . " so let me know of any problems</h5>", 0);
+?>
+

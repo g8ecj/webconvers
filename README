@@ -1,0 +1,89 @@
+
+What is webconvers? 
+------------------
+
+webconvers is a web-based interface to the amprnet World Wide Convers system 
+that only requires a browser capable of supporting frames. With the addition 
+of Javascript (selectable by the installer or by the user at login time) a 
+lot of additional facilities become available that improve performance through 
+caching proxy servers, improved display and more functionality.
+
+
+I wrote it so that I could get into convers from work where there is a very 
+solid firewall that passes port 80 only :-((. The packet system at home
+has an ADSL connection so no problem with the 'net side and the convers
+server is running on that already anyway (as well as the club mailman list
+server and other web pages) so a few days of hacking and here we are...
+
+webconvers is written in the PHP language, which is fairly cross-platform
+and available for many different web servers. The code is available under
+the GNU General Public License Version 2 (see included LICENSE file).
+
+How does it work?
+----------------
+
+It consists of a front page that provides access to the interface by
+opening a window using Javascript(*) (index.html). This would normally be 
+accessed by the user as being the default page for the webconvers directory.
+This points at the default page (frames.php) in the webconvers directory. 
+This prompts for a user name and starting channel number and sets a cookie 
+containing the user value. It then builds a set of frames for the convers 
+display, user input, a line of option push buttons and the list of users 
+online(*).
+
+Each of the windows of the frame is handled by its own php script. They
+communicate via the cookie (user name) from the browser and via a database
+(actually a sequential file) that is used to pass option and user
+input to the main display script.
+
+The output script is the heart of the system. It is the one that establishes
+the link to the convers server, echos data to the user and gets user input
+from the database to send to the convers server (and echo to the user
+display). It also sends a 'magic word' to the javascript refresh script to 
+force the userlist to refresh if it sees the string '***' at the start of a 
+line (which indicates a status change, most likely a user joining or leaving).
+
+The input script simply takes user input and puts it in the database. It can
+also 'kick' a refresh of the hidden Javascript refresh page. This means
+the user perceives a better response!!
+
+The option script is set up to autorefresh at half the timeout period so that
+it keeps the link alive as well as reacting to the various buttons being
+pushed! It can also 'kick' a refresh of the hidden Javascript refresh page.
+
+The userlist script sends a status message to the main loop via the
+database to ask for a refresh. The main loop uses a state machine to extract
+the data returned by a '/w *' command which is passed to the userlist
+script (via the database again) which parses the text to extract callsigns,
+channel number and personal texts. These are built up as links to the
+private frame script and the text label on the 'tip hint' so that
+personal text is displayed when the cursor is hovered over the callsign.
+
+The private script takes the callsign and personal text from the link
+in the userlist and creates a pop-up that takes the user input and prepends
+the string "/m <callsign> " to send a private message to another user. The
+personal data is used in the title bar of the private pop-up.
+
+The Javascript refresh frame is a hidden frame that asks its script for
+output data on a regular basis from the main database file. It can also be 
+'kicked' from the user inputting data. The output data is then contained 
+within a complete frame which passes through proxy servers much better than 
+the continually open main output page text. The content of the frame uses 
+the Javascript write method to write directly to the output frame and to 
+scroll it when necessary.
+
+There are several utility scripts to handle configuration, access control,
+database access, and common tasks such as display colouration, string
+language translation and cookie handling.
+
+There are seperate string files for each language (only English at present...)
+
+(*) Javascript mode only - it can also just use frames but the quick refresh
+and the user list are missing.
+
+                     -------------------*------------------
+
+
+
+webconvers was created and is Copyright 2000-2004 by Robin Gilks, G8ECJ/ZL3ROB.
+

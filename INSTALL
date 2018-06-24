@@ -1,0 +1,39 @@
+Installation
+============
+
+
+Copy all the files to your favo(u)rite directory (e.g. /usr/local/webconvers)
+and insert an include statement at the end of your httpd.conf file to
+include webconvers.conf. Edit webconvers.conf so that the Alias path
+points at the directory and restart the web server.
+
+If a different alias is used, the sample html page will need to have the
+javascript window parameter pointed at the correct directory. Watch out for
+the cookie path in frame.php and options.php as well.
+
+Make sure the server has the necessary PHP modules installed and loaded at 
+runtime.
+
+Edit config.php with the details of your host (CONVERS_GATEWAY), convers host 
+(CONVERS_HOST), default login channel (DEFAULT_CHAN) and database path 
+(CONVERS_PATH). 
+
+Create the directory that CONVERS_PATH points to and make sure the web server 
+user has access (apache:apache on my Gentoo system). Move the various .txt 
+files to the database directory created above and edit as required.
+The sample access control files may also be used - if they are not present 
+the default access policy is used. The sample MOTD file can also be edited 
+to reflect the local installation - note that this is actually PHP code!
+
+
+Note that this package has only been tested with htpp1.22 and up convers 
+servers. The column numbers used to split out the data in the user list 
+may require adjustment with other servers. These values are in the file 
+users.php. 
+
+
+Thats it really.
+
+
+Robin Gilks G8ECJ/ZL3ROB
+4th June 2004

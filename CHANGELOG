@@ -1,0 +1,113 @@
+CHANGELOG
+
+version 2.1-beta3
+ - use anchor classes to get colour correct for channel numbers
+ - correct use of double quotes so that IE5.5 is happier!!
+ 
+version 2.1-beta2
+ - display final channel correctly
+ 
+version 2.1-beta1
+ - new pop-up channel view window with hot links to channels and users
+ 
+version 2.0 final
+ - no changes from rc1
+ 
+version 2.0-rc1
+ - 1st release candidate after major rework
+ - fixed problem of cookie expiring (and call lost) after 60 minutes
+
+version 1.7
+ - major update for compatibility with PHP 4.3 so will NOT work for < 4.1
+ - allow register_globals in php.ini to be off (now uses $_POST, $_REQUEST, $_COOKIE etc)
+ - change from meta output to header directives
+ - restructured user list output and use text, not button, refresh link
+ - junk the non-parsed headers output method (requires Apache > 1.2)
+ - lots more tool tips!!
+ - changes to allow safe_mode operation (ensure file ownership is correct!!)
+ 
+version 1.6
+ - implement warning about cookies as required by UK government
+   (can be replaced with null string in language file!!)
+  
+Version 1.5
+ - Tool tips on links in option and user frames
+ - Improved install instructions
+ - Open seperate window for non-Javascript users
+ - Trigger refresh from user input on personal message window
+ - Close button on personal message window
+ - Flush old data AFTER initial announcements so user gets to see them!!
+ - Avoid Javascript references to objects that don't yet exist at startup
+
+Version 1.4
+ - Extra backslashes were still appearing on occation - htmlentities sorts that!!
+ - When a user receives a /m message "<*call*>" its now in a consistant colour
+ - Help text tweaked to show how to move off the login channel
+ - Removed wordwrap on user input - let the browser do it!!
+ - Speeded up user echo (and flushing of any waiting data) with more Javascript
+ - Reduced network traffic by reducing refreshes
+ - Removed unnecessary <style> sections
+ - Corrected spelling mistakes in help
+ - Simplified the frames construction
+ - Display current channel number at top of user list
+ - Allow user to select default channel number at login time
+ - Use Alias in apache configuration to point to the package
+
+Version 1.3
+ - Looks like 1.2 didn't last long!! Several problems processing internally
+   generated html commands resulting in displaying rather than executing them
+ - MOTD, help, the missing backslash all sorted
+   
+Version 1.2
+ - Added user list window with links to private message window
+ - Implemented personal text display via ALT text on icon graphic and in
+   private message window text and title
+ - Added totally non-Javascript entry point to the system (affects the
+   webconvers.html file if upgrading)
+ - Sorted out the problems with html characters, quotes <,>,&,",' etc
+ - Make configuration a bit more consistant
+    
+
+Version 1.1
+ - Added file locking and expiring old data to database handler
+ - Added option to use a hidden Javascript frame to update the main page
+ - Changed config file to use defined constants (also affects MOTD file if
+   upgrading)
+ - More code comments
+
+
+Version 1.0
+ - Final release at last!!
+ - Change license to GPL V2 due to total rewrite from original BSD stuff
+ - Read Javascript spec to see how focus() method actually works!!
+ - Improved scroll in Netscape by learning how scrollBy() method works!
+ - Removed redundant code
+ - MOTD file is now executable PHP to ease embedded commands/variables
+ - Major code changes to improve readability
+
+
+Version 0.93
+ - Given up with server push MIME extensions.
+ - Corrected char-set settings
+ - Implemented accept/reject lists of users based on IP address and callsign
+ - Improved fixed font handling.
+ - Added trace facilities to check users are behaving.
+ - Separate config.php file
+ - Re-arranged code to make it a bit clearer where the functionality is!
+ - Message of the day file rather than hard-coded in nph-output
+
+
+Version 0.92
+ - Minor changes to improve flushing of data from php and hopefully make
+   IE4/5 render immediately.
+ - Improved level of comments to assist anyone making improvements
+
+Version 0.91
+ - 0.90 didn't make it out the door due to several problems with php caching 
+   stat() functions and apache redirects
+
+
+Version 0.90
+ - Initial Release by Robin, g8ecj, <g8ecj@abmdata.demon.co.uk> based on
+   the excellent (and simple enough for me to understand) Stutter chat room
+

@@ -1,0 +1,12 @@
+# sample user access control file
+# not allowed & tell user that's the case
+g8ecj1:deny
+# allow connect
+g8ecj2:allow
+# silent denial of service !!!
+g8ecj3:fail
+# connect as observer
+g8ecj4:monitor
+# for anyone not explicitly in the file
+default:allow
+

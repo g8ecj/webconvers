@@ -1,0 +1,11 @@
+# sample IP access control file
+# allow all amprnet connections without further validation
+ampr.org:allow
+# allow anyone on the local network (me in other words)
+localdomain:allow
+# a certain domain we lock out by saying we are not available
+195.92.0.0^255.255.0.0:fail
+# by default, check the user callsign
+default:check
+
+
